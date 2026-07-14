@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Habitat Lab - Reabilitação & Pintura de Interiores</title>
+    <style>
+        /* Base Reset & Variables */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --bg-color: #f7f6f3;       /* Off-white quente, tom de gesso/cal */
+            --text-dark: #2a2a2a;      /* Antracite para leitura confortável */
+            --accent-green: #3f5145;   /* Verde musgo seco, orgânico */
+            --accent-clay: #b57a62;    /* Terracota desaturado */
+            --text-light: #6e6e6e;     /* Cinza médio para textos secundários */
+            --border-color: #e3dec3;   /* Linhas finas areia */
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            font-family: var(--font-sans);
+            line-height: 1.6;
+            font-size: 16px;
+        }
+
+        /* Navigation */
+        header {
+            border-bottom: 1px solid var(--border-color);
+            padding: 1.5rem 2rem;
+            position: sticky;
+            top: 0;
+            background-color: rgba(247, 246, 243, 0.95);
+            backdrop-filter: blur(5px);
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            color: var(--text-dark);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--accent-clay);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-left: 5px;
+            font-weight: 300;
+        }
+
+        .client-btn {
+            background-color: var(--accent-green);
+            color: #ffffff;
+            padding: 0.6rem 1.2rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: background-color 0.2s ease;
+        }
+
+        .client-btn:hover {
+            background-color: #2f3c33;
+        }
+
+        /* Hero Section */
+        .hero {
+            max-width: 1100px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            max-width: 750px;
+            margin: 0 auto 2.5rem auto;
+        }
+
+        /* Core Values & Concept */
+        .intro-grid {
+            max-width: 1100px;
+            margin: 6rem auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        @media (max-width: 768px) {
+            .intro-grid {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+        }
+
+        .intro-text h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: var(--accent-green);
+        }
+
+        .intro-text p {
+            margin-bottom: 1.5rem;
+            color: var(--text-dark);
+            font-size: 1.05rem;
+        }
+
+        /* The Art/Detail Spotlight Card */
+        .detail-card {
+            background-color: #ffffff;
+            border: 1px solid var(--border-color);
+            padding: 2.5rem;
+            border-radius: 6px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+        }
+
+        .detail-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--accent-clay);
+            font-weight: 600;
+        }
+
+        .detail-card p {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        /* Services Focused */
+        .services-section {
+            background-color: #efece6;
+            padding: 5rem 2rem;
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .services-container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            text-align: center;
+            margin-bottom: 3.5rem;
+            font-weight: 600;
+        }
+
+        .services-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-item {
+            background-color: var(--bg-color);
+            padding: 2rem;
+            border-radius: 4px;
+            border-left: 3px solid var(--accent-green);
+        }
+
+        .service-item h4 {
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+
+        .service-item p {
+            font-size: 0.95rem;
+            color: var(--text-light);
+        }
+
+        /* Client Portal Feature */
+        .portal-section {
+            max-width: 1100px;
+            margin: 6rem auto;
+            padding: 0 2rem;
+            text-align: center;
+        }
+
+        .portal-box {
+            background: linear-gradient(135deg, #efece6 0%, #e5e0d5 100%);
+            border: 1px solid var(--border-color);
+            padding: 3.5rem 2rem;
+            border-radius: 8px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .portal-box h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .portal-box p {
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto 2rem auto;
+            font-size: 1.05rem;
+        }
+
+        .login-simulation {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            max-width: 450px;
+            margin: 0 auto;
+        }
+
+        .login-simulation input {
+            flex: 1;
+            padding: 0.75rem 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            background-color: var(--bg-color);
+        }
+
+        .login-simulation button {
+            background-color: var(--accent-green);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            max-width: 1100px;
+            margin: 6rem auto 4rem auto;
+            padding: 0 2rem;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+            padding-top: 4rem;
+        }
+
+        .contact-section h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .contact-section p {
+            color: var(--text-light);
+            margin-bottom: 2rem;
+        }
+
+        .contact-btn {
+            background-color: var(--accent-clay);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            transition: opacity 0.2s;
+        }
+
+        .contact-btn:hover {
+            opacity: 0.9;
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--border-color);
+            padding: 3rem 2rem;
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo">Habitat Lab<span>Obras</span></a>
+            <a href="#diario" class="client-btn">Aceder à Minha Obra</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>O rigor das artes aplicado ao restauro da sua casa.</h1>
+        <p>Especialistas em reabilitação de superfícies, pintura de interiores e restauro de elementos originais. Um método de trabalho baseado no brio, no detalhe e na transparência diária.</p>
+        <a href="#contacto" class="contact-btn">Solicitar Visita Técnica</a>
+    </section>
+
+    <!-- Concept & Artistry -->
+    <section class="intro-grid">
+        <div class="intro-text">
+            <h2>Transformar espaços com brio e sensibilidade estética.</h2>
+            <p>Acreditamos que reabilitar uma casa ou apartamento exige mais do que técnica construtiva comum — exige a precisão e o olhar atento de quem vem das belas artes.</p>
+            <p>Tratamos cada teto, parede e detalhe arquitetónico como uma tela que merece dedicação absoluta. O nosso compromisso é com o acabamento perfeito e com a valorização da luz e das texturas originais do seu espaço.</p>
+            <p style="font-size: 0.95rem; color: var(--text-light); font-style: italic;">Nota: Sempre que aplicável, privilegiamos soluções e materiais ecológicos para garantir superfícies saudáveis.</p>
+        </div>
+        <div class="detail-card">
+            <h3>A obsessão pelo detalhe</h3>
+            <p>No mundo das artes, um milímetro de desvio altera todo o resultado de uma peça. Transportamos este nível implacável de exigência para as nossas intervenções. Da preparação perfeita das paredes à transição suave entre materiais, o nosso foco está no brio estético que só a execução atenta consegue proporcionar.</p>
+        </div>
+    </section>
+
+    <!-- Services Grid -->
+    <section class="services-section">
+        <div class="services-container">
+            <h2 class="section-title">Especialidades & Foco Técnico</h2>
+            <div class="services-list">
+                <div class="service-item">
+                    <h4>Reabilitação de Superfícies</h4>
+                    <p>Recuperação, nivelamento e preparação rigorosa de tetos e paredes antigas, tratando fissuras e imperfeições estruturais com os materiais adequados.</p>
+                </div>
+                <div class="service-item">
+                    <h4>Pintura de Interiores</h4>
+                    <p>Aplicação de tintas premium e acabamentos de textura aveludada que valorizam o design e a incidência de iluminação natural nos compartimentos.</p>
+                </div>
+                <div class="service-item">
+                    <h4>Restauro de Elementos</h4>
+                    <p>Recuperação manual e conservação de madeiras, portas, molduras e pavimentos originais, preservando o caráter e a história do seu imóvel.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Client Portal Integration -->
+    <section id="diario" class="portal-section">
+        <div class="portal-box">
+            <h2>O Seu Diário de Obra Digital</h2>
+            <p>Não precisa de se deslocar ao local para acompanhar o progresso. Através do seu código de acesso exclusivo, aceda diretamente à sua pasta privada com relatórios e fotografias diárias de cada avanço na reabilitação.</p>
+            <div class="login-simulation">
+                <input type="text" placeholder="Insira o código da sua obra (Ex: HLAB-2026)" aria-label="Código da obra">
+                <button onclick="alert('Funcionalidade de demonstração. Em breve, este botão reencaminhará diretamente para a pasta exclusiva do cliente no Google Drive!')">Aceder</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section id="contacto" class="contact-section">
+        <h2>Vamos conversar sobre o seu espaço?</h2>
+        <p>Apresente-nos a sua ideia de reabilitação. Respondemos com rigor e planeamento detalhado.</p>
+        <a href="#contacto" class="contact-btn">info@habitatlab.space</a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Habitat Lab. Todos os direitos reservados.</p>
+        <p style="margin-top: 0.5rem; font-size: 0.75rem; opacity: 0.7;">Operado em regime de Trabalhador Independente (Recibos Verdes) em conformidade com as regras fiscais de Portugal.</p>
+    </footer>
+
+</body>
+</html>
