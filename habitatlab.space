@@ -312,7 +312,7 @@
     <!-- Navigation -->
     <header>
         <div class="nav-container">
-            <a href="#" class="logo">Habitat Lab<span>Obras</span></a>
+            <a href="#" class="logo"><img src="logo.jpeg" alt="Habitat Lab" style="height: 45px; width: auto; display: block;"></a>
             <a href="#diario" class="client-btn">Aceder à Minha Obra</a>
         </div>
     </header>
